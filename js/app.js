@@ -8,6 +8,11 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const layerBtn = document.getElementById("jsLayer");
+
+const imageName = document.createElement("input");
+imageName.setAttribute("type", "text");
+imageName.className = "save-name";
 
 const INITIAL_COLOR = "#2c2c2c";
 
@@ -93,12 +98,16 @@ if(canvas) {
 
 function handleSaveClick() {
     const image = canvas.toDataURL(); //png가 jpeg보다 화질이 좋고, 기본 값이 png라 따로 image/jpeg처럼 지정 안 해줘도 된다.
-    //console.log(image);
     const link = document.createElement("a");
+    saveBtn.append(imageName);
+    console.log(link);
     link.href = image;
-    link.download = "PaintJS";
-    //console.log(link);
-    link.click();
+    imageName.onkeydown = function setImageName(event) {
+        if(event.keycode == 13) {
+            localStorage.getItem(imageName.value);
+        }
+    }
+    // link.click();
 }
 
 Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick)); 
