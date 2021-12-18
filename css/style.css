@@ -19,6 +19,7 @@ body, .controls {
 }
 
 .controls {
+    position: relative;
     margin-top: 80px;
 }
 
@@ -60,8 +61,8 @@ body, .controls {
 
 input.save-name {
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: -50px;
+    left: 110px;
     width: 200px;
     line-height: 30px;
     padding-left: 10px;
