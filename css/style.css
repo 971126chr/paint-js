@@ -10,6 +10,10 @@ body, .controls {
     align-items: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .canvas {
     width: 700px;
     height: 700px;
@@ -66,4 +70,9 @@ input.save-name {
     width: 200px;
     line-height: 30px;
     padding-left: 10px;
+}
+.layers {
+    position: absolute;
+    top: -780px;
+    right: -280px;
 }

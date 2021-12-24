@@ -16,6 +16,8 @@ imageName.className = "save-name";
 
 const INITIAL_COLOR = "#2c2c2c";
 
+const HIDDEN_CLASSNAME = "hidden";
+
 ctx.fillStyle = "white"; //이미지 저장 시 투명으로 저장 됨
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR;
@@ -99,9 +101,10 @@ if(canvas) {
 function handleSaveClick() {
     const image = canvas.toDataURL(); //png가 jpeg보다 화질이 좋고, 기본 값이 png라 따로 image/jpeg처럼 지정 안 해줘도 된다.
     const link = document.createElement("a");
-    saveBtn.append(imageName);
+    const controlsBtns = document.getElementsByClassName("controls-btns")[0];
+    controlsBtns.append(imageName);
     link.href = image;
-    // console.log(link);
+    imageName.focus();
     imageName.onkeydown = function setImageName() {
         if(window.event.keyCode == 13) {
             link.download = imageName.value;
@@ -109,7 +112,11 @@ function handleSaveClick() {
             console.log(link.download);
         }
     }
-    console.log(imageName.click());
+    imageName.addEventListener("blur", notImageName);
+}
+
+function notImageName() {
+    imageName.classList.add(HIDDEN_CLASSNAME);
 }
 
 Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick)); 
