@@ -17,7 +17,7 @@ body, .controls {
 .canvas {
     width: 700px;
     height: 700px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -74,5 +74,14 @@ input.save-name {
 .layers {
     position: absolute;
     top: -780px;
-    right: -280px;
+    right: -350px;
+}
+.layers .each-layer {
+    width: 200px;
+    line-height: 40px;
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background: gray;
 }

@@ -9,6 +9,7 @@ const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
 const layerBtn = document.getElementById("jsLayer");
+const eachLayer = document.getElementsByClassName("each-layer");
 
 const imageName = document.createElement("input");
 imageName.setAttribute("type", "text");
@@ -18,11 +19,13 @@ const INITIAL_COLOR = "#2c2c2c";
 
 const HIDDEN_CLASSNAME = "hidden";
 
-ctx.fillStyle = "white"; //이미지 저장 시 투명으로 저장 됨
-ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+// ctx.fillStyle = "white"; //이미지 저장 시 투명으로 저장 됨
+// ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.fillStyle = INITIAL_COLOR;
+console.log(ctx.fillStyle);
 ctx.lineWidth = 2.5;
+
 
 let painting = false;
 let filling = false;
@@ -132,4 +135,16 @@ if (mode) {
 
 if (saveBtn) {
     saveBtn.addEventListener("click", handleSaveClick);
+}
+
+function addLayers() {
+    const allLayerList = document.createElement("ul")[0];
+    let layerList = document.createElement("li")[0];
+    console.log("hi");
+    allLayerList.append(layerList);
+    eachLayer.append(allLayerList);
+}
+
+if (layerBtn) {
+    layerBtn.addEventListener("click", addLayers);
 }
